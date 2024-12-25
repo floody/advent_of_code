@@ -62,9 +62,10 @@ def _read_matrix(line: str, matrix: list[list[int]]) -> tuple[int, int] | None:
     return robot
 
 
-def _solve(
-    matrix: list[list[int]], directions: list[tuple[int, int]], robot: tuple[int, int]
-) -> int:
+# pylint: disable=R0801
+def _solve(puzzle) -> int:
+    matrix, directions, robot = _parse_puzzle(puzzle, _read_matrix)
+
     for direction in directions:
         n = _move(direction, matrix, {robot})
         robot = (robot[0] + n[0], robot[1] + n[1])
@@ -74,5 +75,4 @@ def _solve(
 
 if __name__ == "__main__":
     with open("input.txt", encoding="utf-8") as f:
-        matrix, directions, robot = _parse_puzzle(f, _read_matrix)
-        print(_solve(matrix, directions, robot))
+        print(_solve(f))
