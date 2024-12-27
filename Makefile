@@ -6,7 +6,9 @@ black:
 	.venv/Scripts/black.exe advent_of_code
 
 pylint:
-	.venv/Scripts/pylint.exe advent_of_code/*/*
+	for dir in $(dir advent_of_code/*/*/*); do \
+		.venv/Scripts/pylint.exe $$dir; \
+	done
 
 mypy:
 	for dir in $(dir advent_of_code/*/*/*); do \
