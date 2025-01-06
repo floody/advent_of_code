@@ -3,8 +3,8 @@ from collections.abc import Callable
 
 def _read_directions(line: str) -> list[tuple[int, int]]:
     result = []
-    for l in line:
-        match l:
+    for character in line:
+        match character:
             case "^":
                 result.append((-1, 0))
             case ">":

@@ -42,8 +42,8 @@ def _move(
 def _read_matrix(line: str, matrix: list[list[int]]) -> tuple[int, int] | None:
     m = []
     robot = None
-    for l in line:
-        match l:
+    for character in line:
+        match character:
             case "#":
                 m.append(-1)
                 m.append(-1)
